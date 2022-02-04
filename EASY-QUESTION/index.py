@@ -33,3 +33,80 @@ class Solution:
               left = right
           right += 1
       return max_profit
+    
+    
+# QUESTION 1
+# Clock hands
+# Write a function that returns the acute angle between two clock hands, with two integers for the number of hours and number of minutes.
+# E.g. For 3:00, the acute angle would be 90°. For 6:00, it would be 180°.
+
+# Python program to find angle  
+# between hour and minute hands 
+# Function to Calculate angle b/w  
+# hour hand and minute hand  
+def calcAngle(h,m):  
+        # validate the input 
+        if (h < 0 or m < 0 or h > 12 or m > 60): 
+            print('Wrong input') 
+    
+        if (h == 12): 
+            h = 0
+        if (m == 60): 
+            m = 0
+        # Calculate the angles moved by  
+        # hour and minute hands with  
+        # reference to 12:00 
+        hour_angle = 0.5 * (h * 60 + m) 
+        minute_angle = 6 * m 
+        # Find the difference between two angles 
+        angle = abs(hour_angle - minute_angle) 
+        # Return the smaller angle of two  
+        # possible angles 
+        angle = min(360 - angle, angle) 
+        return angle 
+# Driver program   
+h = 6
+m = 60
+print('Angle ', calcAngle(h,m)) 
+
+# This code is contributed by Danish Raza 
+
+
+
+# QUESTION 2
+
+# Is Scrambled Palindrome
+# Write a function that, given a string of letters, returns true or false for whether the letters in the string could be arranged to form a palindrome.
+# E.g. For “torro”, the answer is True, because the letters can be rearranged to spell “rotor”.
+
+def canFormPalindrome(strr):
+    # Create a listt
+    listt = []
+
+    # For each character in input strings,
+    # remove character if listt contains
+    # else add character to listt
+    for i in range(len(strr)):
+        if (strr[i] in listt):
+            listt.remove(strr[i])
+        else:
+            listt.append(strr[i])
+    # if character length is even
+    # list is expected to be empty
+    # or if character length is odd
+    # listt size is expected to be 1
+    if (len(strr) % 2 == 0 and len(listt) == 0 or
+        (len(strr) % 2 == 1 and len(listt) == 1)):
+        return True
+    else:
+        return False
+# Driver code
+if (canFormPalindrome("torro")):
+    print("Yes")
+else:
+    print("No")
+
+# if (canFormPalindrome("rotor")):
+#     print("Yes")
+# else:
+#     print("No")
